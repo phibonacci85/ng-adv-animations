@@ -1,10 +1,31 @@
 import { Component } from '@angular/core';
+import { animateStateTrigger, listStateTrigger, showStateTrigger } from './animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  animations: [
+    showStateTrigger,
+    animateStateTrigger,
+    listStateTrigger
+  ]
 })
 export class AppComponent {
-  title = 'app works!';
+  isShown = false;
+  width = 400;
+  animate = false;
+  testResults = [];
+
+  onAddElement() {
+    this.testResults.push(Math.random());
+  }
+
+  onAnimationStart(event: AnimationEvent) {
+    console.log(event);
+  }
+
+  onAnimationEnd(event: AnimationEvent) {
+    console.log(event);
+  }
 }
